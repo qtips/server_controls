@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control Panel for Kodi</title>
+    <script type="text/javascript" src="lib/jquery-2.2.4.min.js"></script>
+
+    <script>
+        $(function() { //after loading the document
+            $("#rebooter").click( function() {
+                $.get("control", function(data, status) {
+                    $("#test").html(data.replace("\n","<br\>"));
+                })
+            }
+
+            )
+        })
+    </script>
+</head>
+<body>
+<button id="rebooter">Reboot Kodi</button>
+<div id="test"></div>
+</body>
+</html>
