@@ -1,0 +1,8 @@
+<project name="movefile" basedir=".">
+    <move file="out/KodiControlPanelServer.class" toDir="."/>
+    <move todir="webapp/WEB-INF/classes/">
+        <fileset dir="out/">
+            <include name="*.class" />
+        </fileset>
+    </move>
+</project>
