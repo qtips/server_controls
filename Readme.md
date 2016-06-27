@@ -1,0 +1,12 @@
+This is a project for doing various operations on my servers box. For example, one of my servers has Kodi installed which, for some reason sometimes freezes. So I want to reboot it without ssh-logging into it through another computer. This application lets me reboot the server through a very simple web interface, and even my wife is able to use it! I will add more server operations as they are needed.
+
+This project is mainly for testing out Java EE Servlets with embedded server. Servlets are set up using Java EE annotations. Embedded server is Jetty. The gui part is made using JQuery.
+
+I have deliberately NOT used Maven in order to understand exactly how stuff is compiled and packed. So, running the project is a little cumbersome because I want a simple command to run the server. To make a package I had to:
+
+1. Move the compiled servlet classes to the correct webapp path - webapp/WEB-INF/classes because this is the package standard for Java EE Web applications.
+2. The main class which sets the server up and starts it is not part of the webapp and is located in the root of the final package.
+3. To make the file moving easier, I created a simple ant script called build.xml
+4. I did not want the dependencies to external because I wanted a portable application. To be able to achieve this, I had to pack all the dependency stuff into a single jar (the uber jar). I was hoping that I could simply add the dependency jars inside my new jar, but that is not supported by Java EE. So I have to actually extract the dependency jars and then add them extracted content to my new jar. Ugh! I could achieve this with some bash scripting, but instead I found a function in Intellij that does this (by adding a Jar artifact in Project Structure > Artifact ). My final jar is contructed as follows: 1. the dependencies in lib directory are extracted and added to root 2. My main class is added to the root 3. The content of webapp folder is added to the root (so that index.html is found in root).
+
+Overall, this makes a quite dirty uber jar file, but I guess this is the way to make an standalone embedded server work... It is here I actually understood the power of Maven. It is also here I understood why many do not do web development with Java EE (e.g. Ruby). One thing is that you have to rely on external tools for effective packaging. Another is that this setup for packaging makes it difficult to immediately see the result of changes you make as soon as you make them.

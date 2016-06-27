@@ -9,9 +9,8 @@ import java.net.URL;
 
 public class KodiControlPanelServer {
 
-
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        Server server = new Server(args.length == 0 ? 8080 : Integer.parseInt(args[0]));
 
         URL classes = KodiControlPanelServer.class
                 .getProtectionDomain()
