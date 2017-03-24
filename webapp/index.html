@@ -7,18 +7,26 @@
 
     <script>
         $(function() { //after loading the document
-            $("#rebooter").click( function() {
+            $("#restart_comp").click( function() {
                 $.get("control", function(data, status) {
                     $("#test").html(data.replace("\n","<br\>"));
                 })
             }
+            $("#restart_kodi").click( function() {
+                        $.get("control", function(data, status) {
+                            $("#test").html(data.replace("\n","<br\>"));
+                        })
+                    }
 
             )
         })
     </script>
 </head>
 <body>
-<button id="rebooter">Reboot Kodi</button>
+<button id="restart_comp">Restart computer</button>
 <div id="test"></div>
+<p/>
+<button id="restart_kodi">Restart Kodi</button>
+<div id="restart"></div>
 </body>
 </html>
