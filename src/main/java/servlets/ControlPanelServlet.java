@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-@WebServlet({"/" + ControlPanelServlet.RESTART_PATH, "/" + ControlPanelServlet.REBOOT_PATH})
+@WebServlet({ControlPanelServlet.RESTART_PATH, ControlPanelServlet.REBOOT_PATH})
 public class ControlPanelServlet extends HttpServlet {
 
-    public static final String RESTART_PATH = "restart";
-    public static final String REBOOT_PATH = "reboot";
+    public static final String RESTART_PATH = "/restart";
+    public static final String REBOOT_PATH = "/reboot";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
